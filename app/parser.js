@@ -19,7 +19,7 @@
           '--no-sandbox',
           '-–disable-gpu',
         ])
-          //.headless()
+          .headless()
           .windowSize(screen)).build();
 
       try {
