@@ -32,7 +32,6 @@
             PrimeFaces.ab({s:document.getElementById("feeForm:j_idt127:input"),e:"change",p:"feeForm:j_idt127:input",u:"feeForm feeDetailForm"});
         `);
 
-        // await wait(2000);
         await driver.wait(until.elementLocated(By.id('feeForm:j_idt203:input'), 10000));
         await driver.executeScript(`
             const el = document.getElementById("feeForm:j_idt203:input");
@@ -51,13 +50,13 @@
 	        el.dispatchEvent(changeEvent); // имитируем клик на кнопку
         `);
 
-        await wait(1000);
+        await wait(2000);
         const checkBox = await driver.wait(until.elementLocated(By.id('feeForm:j_idt263:input'), 10000));
         if (req.color) {
           await checkBox.click();
         }
 
-        await wait(1500);
+        await wait(3000);
 
         for (const item of req.contries) {
             await driver.executeScript(`
@@ -76,7 +75,6 @@
             await wait(2000);
         }
 
-        await wait(3000);
         await driver.executeScript(`
             const button = document.getElementById("feeForm:j_idt805");
             let clickEvent = new Event('click'); 
@@ -84,25 +82,41 @@
 	          button.dispatchEvent(clickEvent); 
         `);
 
-        await driver.wait(until.elementLocated(By.id('feeDetailForm:j_idt880'), 30000));
+        const data = {};
 
-        const free = await driver.findElement(By.id('feeDetailForm:j_idt880'));
-        
-        // if (req.contries.length > 1) {
-        //     const parties = await driver.findElement(By.id('feeDetailForm:j_idt946'));
-        // } else {
-        //     const parties = null;
-        // }
+        await driver.wait(until.elementLocated(By.css('div[id="feeDetailForm:j_idt880"]'), 10000));
 
-        // const additional = await driver.findElement(By.id('feeDetailForm:j_idt1012'));
-        const total = await driver.findElement(By.id('feeDetailForm:j_idt1144'));
+        try {
+            const fee = await driver.findElement(By.css('div[id="feeDetailForm:j_idt880"]'));
 
-        const data = {
-          basic: await free.getText(),
-          // parties: parties ? await parties.getText() : null,
-          // additional: await additional.getText(),
-          total: await total.getText()
-        };
+            data.basic = await fee.getText();
+        } catch {
+            data.basic = 0;
+        }
+
+        try {
+            const parties = await driver.findElement(By.css('div[id="feeDetailForm:j_idt946"]'));
+      
+            data.parties = await parties.getText();
+        } catch {
+            data.parties = 0;
+        }
+
+        try {
+            const additional = await driver.findElement(By.css('div[id="feeDetailForm:j_idt1012"]'));
+            
+            data.additional = await additional.getText();
+        } catch {
+            data.additional = 0;
+        }
+
+        try {
+            const total = await driver.findElement(By.css('div[id="feeDetailForm:j_idt1144"]'));
+
+            data.total = await total.getText();
+        } catch {
+            data.total = 0;
+        }
 
         return data;
 
@@ -114,6 +128,7 @@
 
 
       } catch (e) {
+        console.log(e);
         await driver.quit();
       } finally {
         await driver.quit();
