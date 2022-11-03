@@ -19,7 +19,9 @@ const server = http.createServer(async (req, res) => {
                 .then(data => {
                     res.statusCode = 200;
                     res.setHeader('Content-Type', 'application/json');
-                    res.setHeader('Access-Control-Allow-Origin', '*');
+                    res.header("Access-Control-Allow-Origin", "*");
+                    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+                    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
                     res.end(
                         JSON.stringify(data)
                     );
@@ -28,7 +30,9 @@ const server = http.createServer(async (req, res) => {
                     console.log(err);
                     res.statusCode = 500;
                     res.setHeader('Content-Type', 'application/json');
-                    res.setHeader('Access-Control-Allow-Origin', '*');
+                    res.header("Access-Control-Allow-Origin", "*");
+                    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+                    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
                     res.end(
                         JSON.stringify({
                             title: 'Ошибка',
@@ -40,7 +44,9 @@ const server = http.createServer(async (req, res) => {
     } else {
         res.statusCode = 404;
         res.setHeader('Content-Type', 'text/html');
-        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
         res.end(
             'Not found'   
         );
