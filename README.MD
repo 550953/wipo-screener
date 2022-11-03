@@ -8,7 +8,7 @@
 
 ### Пример запроса
 host-name.zone
--------------------------
+========================
 body: {
 -------------------------
 * "classes":"21", // Number of classes covered by the mark
