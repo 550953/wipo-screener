@@ -59,17 +59,17 @@
         await wait(3000);
 
         for (const item of req.contries) {
-            await driver.executeScript(`
-                const lables = document.querySelectorAll(".designationCell > .cb-cp");
-                
-                lables.forEach(item => {
-                  const input = item.parentNode.querySelector("input");
-    
-                  input.setAttribute("data-code", item.textContent)
-                })
-            `);
+            // await driver.executeScript(`
+            //     const lables = document.querySelectorAll(".designationCell > .cb-cp");
+            //     
+            //     lables.forEach(item => {
+            //       const input = item.parentNode.querySelector("input");
+            //         
+            //       input.setAttribute("data-code", item.textContent)
+            //     })
+            // `);
 
-            const contry = await driver.findElement(By.css('input[data-code="' + item + '"]'));
+            const contry = await driver.findElement(By.css('input[id="' + item + '"]'));
           
             await contry.click();
             await wait(2000);
