@@ -42,7 +42,7 @@ const server = http.createServer(async (req, res) => {
                 })
         });
     } else {
-        res.statusCode = 404;
+        res.statusCode = 200;
         res.setHeader('Content-Type', 'text/html');
         res.setHeader("Access-Control-Allow-Origin", "*");
         res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
