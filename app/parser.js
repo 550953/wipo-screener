@@ -22,8 +22,6 @@
           .headless()
           .windowSize(screen)).build();
 
-          console.log('start');
-
       try {
 
         await driver.navigate().to('https://madrid.wipo.int/feecalcapp/home.xhtml');
@@ -119,8 +117,6 @@
         } catch {
             data.total = 0;
         }
-
-        console.log(data);
 
         return data;
 
