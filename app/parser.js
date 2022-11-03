@@ -118,6 +118,8 @@
             data.total = 0;
         }
 
+        console.log(data);
+
         return data;
 
         async function wait(ms = 10000) {
