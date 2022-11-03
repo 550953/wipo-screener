@@ -13,11 +13,9 @@ body: {
 
 * "classes":"21", // Number of classes covered by the mark
 * "color":"1",    // Is your mark in colour or colours?
-* "contries":[    // Массив id стран
-*     "feeForm:j_idt771:1:j_idt774"
-* ]
-}  
+* "contries":["feeForm:j_idt771:1:j_idt774"] // Массив id стран  
 
+}  
 
 ### Пример ответа
 body: {  
@@ -25,5 +23,6 @@ body: {
 * "basic": "903.00",      // Basic fee
 * "parties": 0,           // Fees of contracting parties
 * "additional": "100.00", // Complementary fee
-* "total": "2,803.00"     // Grand Total (CHF)
+* "total": "2,803.00"     // Grand Total (CHF)  
+
 }  
