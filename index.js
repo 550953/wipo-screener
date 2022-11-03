@@ -24,6 +24,7 @@ const server = http.createServer(async (req, res) => {
                     );
                 })
                 .catch(err => {
+                    console.log(err);
                     res.statusCode = 500;
                     res.setHeader('Content-Type', 'application/json');
                     res.end(
